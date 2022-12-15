@@ -2,7 +2,7 @@ import React from "react";
 import { Text, StyleSheet, View } from "react-native";
 
 const ComponentsScreen = () => {
-  const temp = "Learning React native is fun though";
+  const temp = "Learning React native is fun though!!";
   return (
     <View>
       <Text style={Styles.textStyle}>
@@ -15,7 +15,7 @@ const ComponentsScreen = () => {
 
 const Styles = StyleSheet.create({
   textStyle: {
-    fontSize: 40,
+    fontSize: 30,
   },
   tempStyle: {
     marginTop: 20,

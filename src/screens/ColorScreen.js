@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text, Button, FlatList } from "react-native";
-import ColorAdjust from "../components/ColorAdjust";
 
 const ColorScreen = () => {
   const [Color, setColor] = useState(["rgb(122,124,234)"]);
@@ -49,9 +48,6 @@ const ColorScreen = () => {
           ></View>
         )}
           ></FlatList>*/}
-      <View>
-        <ColorAdjust />
-      </View>
     </View>
   );
 };

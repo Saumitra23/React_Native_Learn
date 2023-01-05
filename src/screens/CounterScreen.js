@@ -1,23 +1,49 @@
-import React, { useState } from "react";
-import { View, StyleSheet, Text, Button } from "react-native";
+import React, { useReducer, useState } from "react";
+import { View, StyleSheet, Text, Button, TextInput } from "react-native";
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "Increment":
+      return {
+        count: state.count + parseInt(action.payload),
+      };
+    case "Decrement":
+      return {
+        count: state.count - parseInt(action.payload),
+      };
+    default:
+      return;
+  }
+};
 const CounterScreen = () => {
-  const [Count, setCount] = useState(0);
+  const [Count, onChangeCount] = useState(null);
+  const [state, dispatch] = useReducer(reducer, {
+    count: 0,
+  });
+  console.log(Count);
   return (
     <View>
+      <TextInput
+        style={{ padding: 10, margin: 10 }}
+        placeholder="value"
+        onChangeText={onChangeCount}
+        value={Count}
+        keyboardType="numeric"
+        keyboardAppearance="dark"
+      />
       <Button
         title="Increase"
         onPress={() => {
           window.alert("Incremented");
-          setCount((prev) => prev + 1);
+          dispatch({ type: "Increment", payload: Count });
         }}
       ></Button>
-      <Text style={Styles.textStyle}>Count is: {Count}</Text>
+      <Text style={Styles.textStyle}>Count is: {state.count}</Text>
       <Button
         title="Decrease"
         onPress={() => {
           window.alert("Decremented");
-          setCount((prev) => prev - 1);
+          dispatch({ type: "Decrement", payload: Count });
         }}
       ></Button>
     </View>
